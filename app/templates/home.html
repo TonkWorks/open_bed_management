@@ -1,0 +1,352 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}{% if sheet %}{{sheet.title}} - {% endif %}{{ block.super }}{% endblock %}
+{% block extrahead %}
+
+<link href="/static/node_modules/datatables.net-bs/css/dataTables.bootstrap.css" rel="stylesheet"/>
+<link href="/static/node_modules/datatables.net-buttons-bs/css/buttons.bootstrap.css" rel="stylesheet"/>
+<link href="/static/node_modules/datatables.net-responsive-bs/css/responsive.bootstrap.css" rel="stylesheet"/>
+<link href="/static/node_modules/datatables.net-colreorder-bs/css/colReorder.bootstrap.css" rel="stylesheet"/>
+<link href="/static/node_modules/datatables.net-rowgroup-bs/css/rowGroup.bootstrap.css" rel="stylesheet"/>
+<link href="/static/node_modules/datatables.net-select-bs/css/select.bootstrap.css" rel="stylesheet"/>
+
+<link type="text/css" href="http://code.cloudcms.com/alpaca/1.5.23/bootstrap/alpaca.min.css" rel="stylesheet" />
+
+<link href="/static/node_modules/summernote/dist/summernote.css" rel="stylesheet"/>
+
+<link href="{% static 'site/css/table.css' %}" rel="stylesheet"/>
+<link href="{% static 'site/css/bed_management.css' %}" rel="stylesheet"/>
+{% endblock extrahead %}
+
+{% block container %}
+<main class="container" id="panel">
+  </br>
+  </br>
+  </br>
+  </br>
+<i class="fa fa-bed" aria-hidden="true"></i>
+<i class="fa fa-bed" aria-hidden="true"></i>
+<i class="fa fa-stethoscope" aria-hidden="true"></i>
+<i class="fa fa-user-md" aria-hidden="true"></i>
+<i class="fa fa-hospital-o" aria-hidden="true"></i>
+<i class="fa fa-ambulance" aria-hidden="true"></i>
+<i class="fa fa-medkit" aria-hidden="true"></i>
+
+<i class="fa fa-female" aria-hidden="true"></i>
+<i class="fa fa-male" aria-hidden="true"></i>
+<i class="fa fa-exclamation" aria-hidden="true"></i>
+
+
+  <table id="bed_table" class="table table-striped">
+  </table>
+
+</main>
+
+<nav class="container" id="menu">
+
+  </br>
+  </br>
+  </br>
+  </br>
+  <div id="bed_update_form">
+  </div>
+  </br>
+  <div id="bed_update_response" class="text-center">
+  </div>
+
+</nav>
+
+{% endblock container %}
+
+
+{% block footer %}
+{% endblock footer %}
+
+
+{% block scripts %}
+<script src="/static/node_modules/datatables.nett/js/jquery.dataTables.js"></script>
+<script src="/static/node_modules/datatables.net-bs/js/dataTables.bootstrap.js"></script>
+<script src="/static/node_modules/datatables.net-buttons/js/dataTables.buttons.js"></script>
+<script src="/static/node_modules/datatables.net-buttons-bs/js/buttons.bootstrap.js"></script>
+<script src="/static/node_modules/datatables.net-responsive/js/dataTables.responsive.js"></script>
+<script src="/static/node_modules/datatables.net-colreorder/js/dataTables.colReorder.js"></script>
+<script src="/static/node_modules/datatables.net-select/js/dataTables.select.js"></script>
+<script src="/static/node_modules/datatables.net-rowgroup/js/dataTables.rowGroup.js"></script>
+
+<!--<script src="/static/node_modules/summernote/dist/summernote.min.js"></script>-->
+
+<script src="/static/node_modules/slideout/dist/slideout.min.js"></script>
+
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
+<script src="//code.cloudcms.com/alpaca/1.5.23/bootstrap/alpaca.min.js"></script>
+
+<script>
+
+
+var slideout = new Slideout({
+  'panel': document.getElementById('panel'),
+  'menu': document.getElementById('menu'),
+  'padding': 100,
+  'duration': 100,
+  'tolerance': 70,
+  'side': 'right',
+  'easing': 'cubic-bezier(.32,2,.55,.27)'
+});
+
+/*Table*/
+var bed_table = null;
+var beds = null;
+var SITE_SETTINGS = null;
+
+$.getJSON('/api/settings/', function(data) {
+  SITE_SETTINGS = data;
+  SITE_SETTINGS.status_names = []
+  for (i in data.statuses){
+    SITE_SETTINGS.status_names.push(data.statuses[i].name)
+  }
+  loadBedStatusTable();
+});
+
+function updateBedData(){
+  $.getJSON('/api/beds/', function(data) {
+    beds = data;
+    loadBedStatusTable();
+  });
+}
+updateBedData();
+
+function loadBedStatusTable(){
+    if ((SITE_SETTINGS === null) || (beds === null)) {
+      // Not fully loaded yet.
+      return;
+    }
+    if (bed_table === null){
+      bed_table = $('#bed_table').dataTable({
+        processing: false,
+        dom: 'Bfrti',
+        buttons: [
+            'csv',
+        ],
+        //colReorder: true,
+        select: {
+          style: 'single'
+        },
+        displayLength: -1,
+        data: [],
+        //ajax: {
+        //  'url': '/api/beds/',
+        //  'dataSrc': '',
+        //},
+        orderFixed: [1, 'asc'], // Room
+        rowGroup: {
+          dataSrc: "room" // Room
+        },
+        columns: [
+          { 
+            title: "Bed Name",
+            data: "name"
+          },
+          { 
+            title: "Room",
+            data: "room"
+          },
+          { 
+            title: "Status",
+            data: "status",
+            render: function ( data, type, row ) {
+                var h = "";
+                status_name = data;
+                status_obj = null;
+                for (j in SITE_SETTINGS.statuses){
+                    if (SITE_SETTINGS.statuses[j].name == status_name){
+                        status_obj = SITE_SETTINGS.statuses[j];
+                    }
+                }
+
+                if (status_obj !== null) {
+                  h += '<span class="' + status_obj.style + '">';
+                  h += '<i class="' + status_obj.icon + '" aria-hidden="true"></i> ';
+                  h += data + '</span> ';
+                }
+                else {
+                  h += data + ' ';
+                }
+                return h;
+            }
+          },
+          { 
+            title: "Tags",
+            data: "tags",
+            render: function ( data, type, row ) {
+                var h = "";
+                for (i in data){
+                  tag_name = data[i];
+                  tag_obj = null;
+                  for (j in SITE_SETTINGS.tags){
+                      if (SITE_SETTINGS.tags[j].name == tag_name){
+                          tag_obj = SITE_SETTINGS.tags[j];
+                      }
+                  }
+
+                  if (tag_obj !== null) {
+                    h += '<span class="' + tag_obj.style + '">';
+                    h += '<i class="' + tag_obj.icon + '" aria-hidden="true"></i> ';
+                    h += data[i] + '</span> ';
+                  }
+                  else {
+                    h += data[i] + ' ';
+                  }
+                }
+                return h;
+            }
+          }
+        ]
+      });
+
+      $('#bed_table tbody').on('click', 'tr', function () {
+          var row_data = bed_table.DataTable().row( this ).data();
+
+          if (row_data === undefined){
+            return;
+          }
+          generateBedForm(row_data);
+          slideout.open();
+          //$('#bed_table').DataTable().columns.adjust().responsive.recalc();
+      });
+    } //End Table Initialization
+
+    $('#bed_table').DataTable().clear();
+    $('#bed_table').DataTable().rows.add(beds);
+    $('#bed_table').DataTable().draw();
+}
+
+
+/* Bed Update Form */
+
+Alpaca.registerView({
+    "id": "bed_status_update",
+    "parent": "bootstrap-create",
+      "displayReadonly": true, // whether to display read only properties
+    "styles": {
+        "commonIcon": "fa fa-open-o"
+    }
+});
+
+function generateBedForm(bed) {
+  if (bed === undefined){
+    return;
+  }  
+  $("#bed_update_response").html('');
+  if ($("#bed_update_form").alpaca("exists")) {
+    $("#bed_update_form").alpaca("get").setValue(bed);
+    $("#bed_update_form").alpaca("get").refreshValidationState(true);
+  }
+  else{
+    $("#bed_update_form").alpaca({
+          "view": "bed_status_update",
+          "postRender": function(control) {
+              control.setValue(bed);
+          },
+          "schema": {
+              "type": "object",
+              "properties": {
+                  "id": {
+                      "type": "number",
+                      "title":"id"
+                  },
+                  "name": {
+                      "type": "string",
+                      "title":"name"
+                  },
+                  "room": {
+                      "type": "string",
+                      "title":"room"
+                  },
+                  "status": {
+                      "type": "string",
+                      "enum": SITE_SETTINGS.status_names,
+                      "required": true
+                  },
+                  "notes": {
+                      "title":"notes",
+                      "type": "string"
+                  }
+              }
+          },
+          "options": {
+              "form": {
+
+                  "buttons": {
+                      "cancel": {
+                          "title": "Cancel",
+                          "click": function() {
+                              slideout.close();
+                          }
+                      },
+                      "submit": {
+                          "click": function() {
+                              this.refreshValidationState(true);
+                              if (!this.isValid(true)) {
+                                  this.focus();
+                                  return;
+                              }
+
+                              var data = this.getValue();
+                              $.ajax({
+                                  url: '/api/beds/' + data.id + '/?format=json',
+                                  type: 'PUT',
+                                  headers: {"X-CSRFToken": getCookie("csrftoken")},
+                                  data: data,
+                                  success: function (data) {
+                                    var h = '<i class="fa fa-check fa-3x text-success" aria-hidden="true"></i>';              
+                                    $("#bed_update_response").html(h);
+
+                                    $("#bed_update_response").html(h);
+                                    //TODO Dismiss View
+                                    //Update Table
+                                    //console.log(bed_table.api());
+                                    updateBedData();
+                                    slideout.close();
+                                    //$('#bed_table').DataTable().columns.adjust().responsive.recalc();
+                                    //$('#bed_table').DataTable().ajax.reload();
+                                  },
+                                  error: function(r){
+                                    var h = "<pre>" + JSON.stringify(data) + "</pre>"
+                                    $("#bed_update_response").html(h);
+                                  }
+                              });
+                          }
+                      }
+                  }
+              },
+              "fields": {
+                  "id": {
+                      "label": "Bed Id",
+                      "hidden": true
+                  },
+                  "room": {
+                      "label": "Bed Room"
+                  },
+                  "name": {
+                      "label": "Bed Name"
+                  },
+                  "status": {
+                      "label": "Status",
+                      "type": "select",
+                      "optionLabels": SITE_SETTINGS.status_names,
+                      "validator": function(callback) {} //Disable
+                  },
+                  "notes": {
+                      "label": "Notes",
+                      "type": "textarea",
+                      "rows": 6,
+                      "cols": 80
+                  },
+              }
+          }
+      });
+  }
+}
+</script> 
+{% endblock scripts %}

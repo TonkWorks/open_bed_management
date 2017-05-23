@@ -1,0 +1,11 @@
+.selected td {
+      background-color: #0088cc!important;
+}
+#bed_table {
+    width: 100%!important;
+}
+
+table.dataTable {
+border-collapse: collapse;
+width: 100%!important;
+}

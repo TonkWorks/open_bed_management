@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load staticfiles %}
+    
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block meta_properties %}
+    <meta name="description" content="{% block description %}{% endblock description %}">
+    <meta name="author" content="Kevin Dagostino">
+    {% endblock %}
+
+    <link rel="shortcut icon" href="{% static 'site/ico/favicon.ico' %}">
+
+    <title>{% block title %}{{config.SITE_NAME}} {% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this site -->
+    {% block styles %}
+    <link href="{% static 'site/css/main.css' %}" rel="stylesheet">
+    {% endblock styles %}
+
+    <!-- Custom tags for the head tag -->
+    {% block extrahead %}{% endblock extrahead %}
+
+    <!--<script src="https://use.fontawesome.com/2dcd6bd84b.js"></script>-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    {% block slideout_panel %}
+    {% endblock slideout_panel %}
+
+    {% block navbar %}
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'home' %}">
+            {% block navbar-brand %}
+              <!--<img src="{% static 'site/img/logo.png' %}" alt="logo">-->
+              {{config.SITE_NAME}}
+            {% endblock %}
+          </a>
+        </div>
+
+        {% block navbar-menu %}
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            {% block navbar-left %}{% endblock %}
+
+
+
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% block navbar-right %}
+              {% if not user.is_authenticated %}
+                <a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">Log in</a>
+              {% endif %}
+              <li><a href="/dashboard/">Dashboard</a></li>
+              <li><a href="/api/">API</a></li>
+              {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                {% endif %}
+                <li class="">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              			{{ user.get_full_name|truncatechars:20 }}
+              			<span class="caret"> </span>&nbsp&nbsp
+              		    </a>
+        
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="{% url 'profiles:show_self' %}">Profile</a></li>
+                    <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                  </ul>
+                </li>
+              {% endif %}
+            {% endblock %}
+          </ul>
+          </ul>
+        </div><!--/.nav-collapse -->
+        {% endblock %}
+    </div>
+
+
+    {% endblock navbar %}
+
+    {% block messages %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+            <a class="close" data-dismiss="alert">×</a>
+            {{ message|safe }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endblock %}
+
+    {% block splash %}
+    {% endblock splash %}
+    
+    {% block container %}
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>New Project</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+      </div>
+
+    </div><!-- /.container -->
+    {% endblock container %}
+
+    <!-- Site footer -->
+    {% block footer %}
+      <!-- Some social button for contact will do -->
+      <a name="contact"></a>
+      <div class="container">
+            <div class="footer">
+        <div class="row">
+          <div class="col-lg-6">
+              <p>&copy; {{config.SITE_NAME}} {% now 'Y' %}</p>
+          </div>
+          <div class="col-lg-6 text-right">
+            Connect with us on
+            <a href="#"><i class="fa fa-facebook"></i> Facebook</a> or
+            <a href="#"><i class="fa fa-twitter"></i> Twitter</a>
+          </div>
+        </div>
+            </div>
+      </div>
+    {% endblock %}
+
+
+    {% block lib_scripts %}
+     <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-33902626-12', 'auto');
+  ga('send', 'pageview');
+</script>
+        <script src="/static/jquery/jquery_1.12.2.min.js"></script>
+       <!-- <script src="/static/jquery/jquery-ui-latest.js"></script> -->
+        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}" type="text/javascript" charset="utf-8"></script>
+
+        <!-- <script src="{% static 'node_modules/moment/min/moment.min.js' %}" type="text/javascript" charset="utf-8"></script> -->
+    
+    {% endblock lib_scripts %}
+
+
+<script>
+
+function getCookie(c_name) {
+    if(document.cookie.length > 0) {
+        c_start = document.cookie.indexOf(c_name + "=");
+        if(c_start != -1) {
+            c_start = c_start + c_name.length + 1;
+            c_end = document.cookie.indexOf(";", c_start);
+            if(c_end == -1) c_end = document.cookie.length;
+            return unescape(document.cookie.substring(c_start,c_end));
+        }
+    }
+    return "";
+}
+
+$(document).ready(function(){
+    $(function () {
+        $.ajaxSetup({
+            headers: {
+                "X-CSRFToken": getCookie("csrftoken")
+            }
+        });
+    });
+});
+
+//var user_name = '{{request.user.name}}';
+//$(document).ready(function() {
+//  $("#search_form").submit( function( e ) {
+//      e.preventDefault();
+//      window.location = '/search?q=' + $('#search_input').val();
+//  })
+//})
+
+
+// parameters utility
+{% comment %}var parameters;
+(window.onpopstate = function () {
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    parameters = {};
+    while (match = search.exec(query))
+       parameters[decode(match[1])] = decode(match[2]);
+})();{% endcomment %}
+
+</script>
+
+
+    {% block scripts %}
+    {% endblock scripts %}
+  </body>
+</html>
+
+

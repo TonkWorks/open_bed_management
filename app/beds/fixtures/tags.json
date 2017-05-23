@@ -1,0 +1,32 @@
+[
+    {
+        "pk": 1,
+        "name": "Private",
+        "style": "label label-info",
+        "icon": "fa fa-user"
+    },
+    {
+        "pk": 2,
+        "name": "Semi-Private",
+        "style": "label label-info",
+        "icon": "fa fa-users"
+    },
+    {
+        "pk": 3,
+        "name": "F Only",
+        "style": "label label-info",
+        "icon": "fa fa-female"
+    },
+    {
+        "pk": 4,
+        "name": "Child",
+        "style": "label label-info",
+        "icon": "fa fa-child"
+    },
+    {
+        "pk": 5,
+        "name": "M Only",
+        "style": "label label-info",
+        "icon": "fa fa-male"
+    }
+]

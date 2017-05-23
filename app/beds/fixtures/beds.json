@@ -1,0 +1,258 @@
+[
+    {
+        "pk": 1,
+        "status": "Occupied",
+        "tags": [
+            "Private",
+            "Semi-Private",
+            "F Only"
+        ],
+        "name": "dfgdfgdsfgsdfg",
+        "room": "OR 1",
+        "notes": "dfbdfb"
+    },
+    {
+        "pk": 2,
+        "status": "Needs Cleaning",
+        "tags": [
+            "Semi-Private"
+        ],
+        "name": "Bed2",
+        "room": "ER 1",
+        "notes": null
+    },
+    {
+        "pk": 3,
+        "status": "Available",
+        "tags": [
+            "Private",
+            "Child"
+        ],
+        "name": "Bed",
+        "room": "ER 1",
+        "notes": "dfbdfbs"
+    },
+    {
+        "pk": 4,
+        "status": "Needs Cleaning",
+        "tags": [
+            "Private"
+        ],
+        "name": "Bed4",
+        "room": "ER 1",
+        "notes": "awdwadawdawssdss"
+    },
+    {
+        "pk": 5,
+        "status": "Needs Cleaning",
+        "tags": [],
+        "name": "Bed5",
+        "room": "Evaluation",
+        "notes": null
+    },
+    {
+        "pk": 6,
+        "status": "Needs Cleaning",
+        "tags": [],
+        "name": "Bed6",
+        "room": "Evaluation",
+        "notes": "dfff"
+    },
+    {
+        "pk": 7,
+        "status": "Needs Cleaning",
+        "tags": [],
+        "name": "Bed7",
+        "room": "ER 1",
+        "notes": "This is a note"
+    },
+    {
+        "pk": 8,
+        "status": "Available",
+        "tags": [
+            "Private",
+            "Child"
+        ],
+        "name": "Bed8",
+        "room": "Evaluation",
+        "notes": "rsgdd"
+    },
+    {
+        "pk": 9,
+        "status": "Available",
+        "tags": [
+            "Private",
+            "Semi-Private",
+            "M Only"
+        ],
+        "name": "OR Bed 1",
+        "room": "OR 1",
+        "notes": "some notes"
+    },
+    {
+        "pk": 10,
+        "status": "Available",
+        "tags": [
+            "Private"
+        ],
+        "name": "Bed",
+        "room": "Evaluation",
+        "notes": ""
+    },
+    {
+        "pk": 11,
+        "status": "Available",
+        "tags": [],
+        "name": "Bed",
+        "room": "Evaluation",
+        "notes": ""
+    },
+    {
+        "pk": 12,
+        "status": "Available",
+        "tags": [],
+        "name": "Bed",
+        "room": "Evaluation",
+        "notes": ""
+    },
+    {
+        "pk": 13,
+        "status": "Available",
+        "tags": [],
+        "name": "Bed",
+        "room": "Evaluation",
+        "notes": "ss"
+    },
+    {
+        "pk": 14,
+        "status": "Available",
+        "tags": [],
+        "name": "Bed",
+        "room": "Evaluation",
+        "notes": ""
+    },
+    {
+        "pk": 15,
+        "status": "Available",
+        "tags": [],
+        "name": "Bed",
+        "room": "Evaluation",
+        "notes": ""
+    },
+    {
+        "pk": 16,
+        "status": "Needs Cleaning",
+        "tags": [],
+        "name": "Bed",
+        "room": "Evaluation",
+        "notes": ""
+    },
+    {
+        "pk": 17,
+        "status": "Needs Cleaning",
+        "tags": [],
+        "name": "Bed",
+        "room": "Evaluation",
+        "notes": ""
+    },
+    {
+        "pk": 18,
+        "status": "Available",
+        "tags": [],
+        "name": "Bed",
+        "room": "Evaluation",
+        "notes": ""
+    },
+    {
+        "pk": 19,
+        "status": "Needs Cleaning",
+        "tags": [],
+        "name": "Bed",
+        "room": "Evaluation",
+        "notes": ""
+    },
+    {
+        "pk": 20,
+        "status": "Needs Cleaning",
+        "tags": [],
+        "name": "Bed",
+        "room": "Evaluation",
+        "notes": ""
+    },
+    {
+        "pk": 21,
+        "status": "Needs Cleaning",
+        "tags": [],
+        "name": "Bed",
+        "room": "Evaluation",
+        "notes": "some notes on the bed."
+    },
+    {
+        "pk": 22,
+        "status": "Needs Cleaning",
+        "tags": [],
+        "name": "Bed",
+        "room": "Evaluation",
+        "notes": ""
+    },
+    {
+        "pk": 23,
+        "status": "Available",
+        "tags": [
+            "F Only"
+        ],
+        "name": "Bed",
+        "room": "OR 1",
+        "notes": ""
+    },
+    {
+        "pk": 24,
+        "status": "Available",
+        "tags": [
+            "Semi-Private"
+        ],
+        "name": "Bed",
+        "room": "OR 1",
+        "notes": ""
+    },
+    {
+        "pk": 25,
+        "status": "Available",
+        "tags": [
+            "Semi-Private"
+        ],
+        "name": "Bed",
+        "room": "OR 1",
+        "notes": ""
+    },
+    {
+        "pk": 26,
+        "status": "Available",
+        "tags": [
+            "Semi-Private"
+        ],
+        "name": "Bed",
+        "room": "OR 1",
+        "notes": ""
+    },
+    {
+        "pk": 27,
+        "status": "Available",
+        "tags": [
+            "Semi-Private"
+        ],
+        "name": "Bed",
+        "room": "OR 1",
+        "notes": ""
+    },
+    {
+        "pk": 28,
+        "status": "Available",
+        "tags": [
+            "Semi-Private"
+        ],
+        "name": "Bed",
+        "room": "OR 1",
+        "notes": ""
+    }
+]

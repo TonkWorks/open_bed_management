@@ -1,0 +1,26 @@
+[
+    {
+        "pk": 1,
+        "name": "Available",
+        "style": "label label-success",
+        "icon": ""
+    },
+    {
+        "pk": 2,
+        "name": "Occupied",
+        "style": "label label-info",
+        "icon": ""
+    },
+    {
+        "pk": 3,
+        "name": "Needs Cleaning",
+        "style": "label label-danger",
+        "icon": ""
+    },
+    {
+        "pk": 4,
+        "name": "Out of Commission",
+        "style": "label label-warning",
+        "icon": ""
+    }
+]
