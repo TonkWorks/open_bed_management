@@ -4,9 +4,9 @@ from django.contrib.auth.decorators import login_required
 from constance import config
 from . import views
 
-admin.site.site_header = config.SITE_NAME + ' Admin'
-admin.site.index_title =  config.SITE_NAME + ' Admin'
-admin.site.site_title =  config.SITE_NAME
+#admin.site.site_header = config.SITE_NAME + ' Admin'
+#admin.site.index_title =  config.SITE_NAME + ' Admin'
+#admin.site.site_title =  config.SITE_NAME
 
 urlpatterns = [
     url(r'^me$', views.ShowProfile.as_view(), name='show_self'),
