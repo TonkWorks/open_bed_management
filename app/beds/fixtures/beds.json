@@ -1,6 +1,7 @@
 [
     {
         "pk": 1,
+        "model": "beds.models.Bed",
         "status": "Occupied",
         "tags": [
             "Private",
@@ -13,6 +14,7 @@
     },
     {
         "pk": 2,
+        "model": "beds.models.Bed",
         "status": "Needs Cleaning",
         "tags": [
             "Semi-Private"
@@ -23,6 +25,7 @@
     },
     {
         "pk": 3,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [
             "Private",
@@ -34,6 +37,7 @@
     },
     {
         "pk": 4,
+        "model": "beds.models.Bed",
         "status": "Needs Cleaning",
         "tags": [
             "Private"
@@ -44,6 +48,7 @@
     },
     {
         "pk": 5,
+        "model": "beds.models.Bed",
         "status": "Needs Cleaning",
         "tags": [],
         "name": "Bed5",
@@ -52,6 +57,7 @@
     },
     {
         "pk": 6,
+        "model": "beds.models.Bed",
         "status": "Needs Cleaning",
         "tags": [],
         "name": "Bed6",
@@ -60,6 +66,7 @@
     },
     {
         "pk": 7,
+        "model": "beds.models.Bed",
         "status": "Needs Cleaning",
         "tags": [],
         "name": "Bed7",
@@ -68,6 +75,7 @@
     },
     {
         "pk": 8,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [
             "Private",
@@ -79,6 +87,7 @@
     },
     {
         "pk": 9,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [
             "Private",
@@ -91,6 +100,7 @@
     },
     {
         "pk": 10,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [
             "Private"
@@ -101,6 +111,7 @@
     },
     {
         "pk": 11,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [],
         "name": "Bed",
@@ -109,6 +120,7 @@
     },
     {
         "pk": 12,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [],
         "name": "Bed",
@@ -117,6 +129,7 @@
     },
     {
         "pk": 13,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [],
         "name": "Bed",
@@ -125,6 +138,7 @@
     },
     {
         "pk": 14,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [],
         "name": "Bed",
@@ -133,6 +147,7 @@
     },
     {
         "pk": 15,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [],
         "name": "Bed",
@@ -141,6 +156,7 @@
     },
     {
         "pk": 16,
+        "model": "beds.models.Bed",
         "status": "Needs Cleaning",
         "tags": [],
         "name": "Bed",
@@ -149,6 +165,7 @@
     },
     {
         "pk": 17,
+        "model": "beds.models.Bed",
         "status": "Needs Cleaning",
         "tags": [],
         "name": "Bed",
@@ -157,6 +174,7 @@
     },
     {
         "pk": 18,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [],
         "name": "Bed",
@@ -165,6 +183,7 @@
     },
     {
         "pk": 19,
+        "model": "beds.models.Bed",
         "status": "Needs Cleaning",
         "tags": [],
         "name": "Bed",
@@ -173,6 +192,7 @@
     },
     {
         "pk": 20,
+        "model": "beds.models.Bed",
         "status": "Needs Cleaning",
         "tags": [],
         "name": "Bed",
@@ -181,6 +201,7 @@
     },
     {
         "pk": 21,
+        "model": "beds.models.Bed",
         "status": "Needs Cleaning",
         "tags": [],
         "name": "Bed",
@@ -189,6 +210,7 @@
     },
     {
         "pk": 22,
+        "model": "beds.models.Bed",
         "status": "Needs Cleaning",
         "tags": [],
         "name": "Bed",
@@ -197,6 +219,7 @@
     },
     {
         "pk": 23,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [
             "F Only"
@@ -207,6 +230,7 @@
     },
     {
         "pk": 24,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [
             "Semi-Private"
@@ -217,6 +241,7 @@
     },
     {
         "pk": 25,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [
             "Semi-Private"
@@ -227,6 +252,7 @@
     },
     {
         "pk": 26,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [
             "Semi-Private"
@@ -237,6 +263,7 @@
     },
     {
         "pk": 27,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [
             "Semi-Private"
@@ -247,6 +274,7 @@
     },
     {
         "pk": 28,
+        "model": "beds.models.Bed",
         "status": "Available",
         "tags": [
             "Semi-Private"

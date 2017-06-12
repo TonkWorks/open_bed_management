@@ -1,24 +1,28 @@
 [
     {
         "pk": 1,
+        "model": "beds.models.Status",
         "name": "Available",
         "style": "label label-success",
         "icon": ""
     },
     {
         "pk": 2,
+        "model": "beds.models.Status",
         "name": "Occupied",
         "style": "label label-info",
         "icon": ""
     },
     {
         "pk": 3,
+        "model": "beds.models.Status",
         "name": "Needs Cleaning",
         "style": "label label-danger",
         "icon": ""
     },
     {
         "pk": 4,
+        "model": "beds.models.Status",
         "name": "Out of Commission",
         "style": "label label-warning",
         "icon": ""

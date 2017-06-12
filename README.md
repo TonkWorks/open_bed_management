@@ -1,7 +1,7 @@
 # Open Bed Management
 A tool to help track the status of hospital beds.
 
-Check out the demo: https://open_bed_management.tonkworks.com
+Check out the demo: https://demo.open-bed-management.tonkworks.com
 * username: admin@tonkworks.com
 * password: tonkworks
 

@@ -45,6 +45,8 @@ RUN mkdir /run/nginx
 # Copy your application code to the container (make sure you create a .dockerignore file if any large files or directories should be excluded)
 ENV APP_PRODUCTION=1
 
+EXPOSE 80
+
 RUN mkdir /code
 RUN mkdir /code/app
 WORKDIR /code/app/
